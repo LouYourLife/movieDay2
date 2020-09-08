@@ -11,6 +11,7 @@ import facades.MovieFacade;
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityNotFoundException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -59,14 +60,23 @@ public class MovieResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getById(@PathParam("id") int id) {
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        MovieDTO movie = FACADE.getMovieById(id);
+        if (movie == null) {
+            throw new EntityNotFoundException("Can't find movie with id: " + id);
+        }
+        return new Gson().toJson(movie);
     }
 
     @Path("title/{title}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response getByTitle(@PathParam("title") String title) {
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        List<MovieDTO> movies = FACADE.getMoviesByTitle(title);
+        //return new Gson().toJson(movies);
+        //return Response.ok().entity(gson.toJson(listDTO)).build();
+        return Response.ok().entity(GSON.toJson(movies)).build();
     }
     
 

@@ -19,6 +19,7 @@ import static org.hamcrest.Matchers.hasProperty;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -91,8 +92,8 @@ public class MovieFacadeTest {
     @Test
     public void testGetMovieById(){
         //Todo
-//        MovieDTO mDTO = facade.getMovieById(1);
-//        assertEquals(mDTO.getTitle(), "Harry Potter and the Chamber of Secrets");
+        MovieDTO movie = new MovieDTO(m1);
+        assertTrue(movie.getId() != 0);
     }
     
     @Test
@@ -101,6 +102,9 @@ public class MovieFacadeTest {
 //        MovieDTO movie = facade.getMovieById(2);
 //        assertThat(movie.getActors(), arrayContainingInAnyOrder("Daniel Radcliffe"));
 //Lav en Array<String> og saml skuespillere, spørg Nikolaj hvis problemer opstår
+        MovieDTO movie = new MovieDTO(m1);
+        String[] actors = movie.getActors();
+        assertThat(actors, arrayContainingInAnyOrder("Emma Watson", "Daniel Radcliffe", "Alan Rickman", "Rupert Grint"));
     }
     
     @Test

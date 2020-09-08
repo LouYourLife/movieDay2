@@ -50,7 +50,9 @@ public class MovieResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getAll() {
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        List<MovieDTO> movies = FACADE.getAllMovies();
+        return new Gson().toJson(movies);
     }
 
     @Path("/{id}")

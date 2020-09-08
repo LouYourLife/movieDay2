@@ -100,6 +100,7 @@ public class MovieFacadeTest {
         //You could use the method: arrayContaining(....
 //        MovieDTO movie = facade.getMovieById(2);
 //        assertThat(movie.getActors(), arrayContainingInAnyOrder("Daniel Radcliffe"));
+//Lav en Array<String> og saml skuespillere, spørg Nikolaj hvis problemer opstår
     }
     
     @Test

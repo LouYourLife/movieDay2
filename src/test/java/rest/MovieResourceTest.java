@@ -125,12 +125,32 @@ public class MovieResourceTest {
     @Test
     public void testGetAll() {
         //TODO
+        //Create a test for the endpoint api/movie/all and assert that the response includes the right amount of movies 
+        //(what you have setup for the test) and preferably also that you got the expected movies.
+        given().
+                get("/movie/all")
+                .then()
+                .assertThat()
+                .body("title", hasItems("Harry Potter and the Philosopher's Stone",
+                        "Harry Potter and the Chamber of Secrets",
+                        "Once Upon a Time... in Hollywood"))
+                .assertThat()
+                .body("title", hasSize(3));
     }
 
     
     @Test
     public void testFindByTitle() {
         //TODO
+        //Create a test for an endpoint: api/movie/title/{title}. Use a name you know exists, and (for red students) 
+        //also try with a name that does not exist (obviously this requires that you know what you return in such a case)
+        given().
+                pathParam("title", "Harry Potter")
+                .get("/movie/title/{title}")
+                .then()
+                .assertThat()
+                .body("title", hasItems("Harry Potter and the Philosopher's Stone",
+                        "Harry Potter and the Chamber of Secrets"));
     }
     
     @Test
@@ -142,7 +162,18 @@ public class MovieResourceTest {
     public void testFindById() {
         //given().get("/movie/{id}", m2.getId())
         //TODO
-          
+        //Create a test for an endpoint:  api/movie/{id} and verify that you get the expected Movie
+//        given().
+//                pathParam("id", 1)
+//                .get("/movie/{id}")
+//                .then()
+//                .assertThat()
+//                .body("title", equalTo("Harry Potter and the Chamber of Secrets"));
+        given().
+                get("/movie/" + m2.getId())
+                .then()
+                .assertThat()
+                .body("id", equalTo(m2.getId()))/*.log().body()*/;
     }
 }
 

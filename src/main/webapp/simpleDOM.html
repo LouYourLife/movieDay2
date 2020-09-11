@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple DOM manipulation and Event handling</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            div {
+                background-color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Simple DOM manipulation and Event handling</h1>
+        <div id="one"><p>Hej</p></div>
+        <div id="two"><p>Med</p></div>
+        <div id="three"><p>Dig</p></div>
+        <button id="b1" onclick="clickMe()">Click me</button>
+        
+        <script>
+            var button = document.getElementById("b1");
+            button.onclick = clickMe();
+            function clickMe(){
+                document.getElementById("one").style.backgroundColor = "red";
+                document.getElementById("two").style.backgroundColor = "green";
+                document.getElementById("three").style.backgroundColor = "yellow";
+            };
+        </script>
+    </body>
+</html>

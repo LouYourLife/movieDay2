@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Using map to create list’s (ul’s, tables etc.)</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Using map to create list’s (ul’s, tables etc.)</h1>
+
+        <div id="outer">
+
+            <p id="names">Klik for liste af navne</p>
+
+
+
+        </div>
+
+        <div id="formDiv">
+            <!-- action="/action_page.php" onsubmit="return validateForm()" method="post" -->
+            <form name="myForm">
+                <input id="name" type="text" name="fname" value="">
+                <input type="button" value="Submit" onclick="myFunction()">
+                <input type="button" value="Remove first" onclick="removeF()">
+                <input type="button" value="Remove last" onclick="removeL()">
+            </form>
+
+            <p id="newNames">Ny liste med navne</p>
+            <p id="removedF"></p>
+            <p id="removedL"></p>
+        </div>
+
+        <script>
+            var arr = ["Theodore", "Adelaide", "Freya", "Ryan", "Al", "Liv"];
+            var arrNew = ["Theodore", "Adelaide", "Freya", "Ryan", "Al", "Liv"];
+            //var newName = document.getElementsByName("fname");
+
+            function myFunction() {
+                // Navn skrevet i formen
+                var arrUpd = document.getElementById("name").value;
+                // Navn tilføjet til array
+                arrNew.push(arrUpd);
+                // String med html tags
+                var html1 = arrNew.map(function (name) {
+                    return "<li>" + name + "</li>";
+                }).join("");
+                // Sendt til <p id="newNames">
+                document.getElementById("newNames").innerHTML = "<ul>" + html1 + "</ul>";
+            }
+
+            //Clean everything!!
+
+            // Remove first name on list
+            function removeF() {
+                // Navnet skrevet i formen
+                var arrRemF = document.getElementById("name").value;
+                // y er listen af navne i arrayet
+                var y = arrNew;
+                var removed = arrNew.shift();
+                console.log("arrRemF "+arrRemF)
+                console.log("y "+y)
+                console.log("Removed "+removed)
+                document.getElementById("removedF").innerText = "Removed " + removed + " from list";
+            }
+
+            // Remove last name on list
+            function removeL() {
+                var arrRemL = document.getElementById("name").value;
+                var removed = arrNew.pop();
+                var y = arrNew;
+                console.log("arrRemL " + arrRemL)
+                console.log("y " + y)
+                console.log("Removed " + removed)
+                document.getElementById("removedL").innerText = "Removed " + removed + " from list";
+            }
+
+            var namesHTML = arr.map(function (name) {
+                return "<li>" + name + "</li>";
+            }).join("");
+            console.log("<ul>" + namesHTML + "</ul>")
+
+            var outer = document.getElementById("outer");
+            outer.onclick = function (e) {
+                document.getElementById("names").innerHTML = "<ul>" + namesHTML + "</ul>";
+            }
+
+        </script>
+    </body>
+</html>

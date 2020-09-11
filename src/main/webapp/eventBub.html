@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Event Bubbling and event arguments</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .mydiv {width: 25px; height: 25px;background-color:yellow; margin:1px;}
+        </style>
+    </head>
+    <body>
+        <h1>Event Bubbling and event arguments</h1>
+
+        <!--<button id="bb">Click me please!</button>-->
+
+        <div id="outer">
+            
+            <div id="div1" class="mydiv">Div1</div>
+            <div id="div2">Div2</div>
+            <div id="div3">Div3</div>
+            <div id="div4">Div4</div>
+            <div id="div5">Div5</div>
+            
+            <p id="p1"></p>
+            <p id="p2"></p>
+            
+        </div>
+
+        <script>
+            
+
+//            function clickMee(e) {
+//                alert("clicked");
+//                var target = e.target;
+//                console.log(target.id);
+//            }
+        </script>
+
+        <script>
+            //var button = document.getElementById("bb");
+            //var outerTest = document.getElementById("div3");
+            //button.onclick = clickMee;
+            
+//            button.onclick = function(e) {
+//                var target = e.target;
+//                console.log("Hi from "+target.id)
+//                outerTest.classList.add("mydiv");
+//            }
+            
+            
+            var outer = document.getElementById("outer");
+            outer.onclick = function(e) {
+                var target = e.target;
+                //console.log(target.id)
+                //console.log("Hi from " + target.id)
+                document.getElementById("p1").innerText = target.id;
+                document.getElementById("p2").innerText = "Hi from " + target.id;
+            }
+        </script>
+    </body>
+</html>

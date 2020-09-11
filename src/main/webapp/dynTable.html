@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Using map and filter to create dynamic table-rows</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 50%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 4px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Using map and filter to create dynamic table-rows</h1>
+
+        <table id="fillT">
+            <tr>
+                <th>Id</th>
+                <th>Year</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Price</th>
+            </tr>
+        </table>
+        <button onclick="table()">Klik for tabel</button>
+        <br>
+        <br>
+        <input type="text" id="setPrice">
+        <button onclick="tablePrice()">Price less than</button>
+
+        <script>
+            var cars = [
+                {id: 1, year: 1997, make: 'Ford', model: 'E350', price: 3000},
+                {id: 2, year: 1999, make: 'Chevy', model: 'Venture', price: 4900},
+                {id: 3, year: 2000, make: 'Chevy', model: 'Venture', price: 5000},
+                {id: 4, year: 1996, make: 'Jeep', model: 'Grand Cherokee', price: 4799},
+                {id: 5, year: 2005, make: 'Volvo', model: 'V70', price: 44799}
+            ];
+
+            var heading = "<tr><th>Id</th><th>Year</th><th>Make</th><th>Model</th><th>Price</th></tr>";
+
+            function table() {
+                var carT = cars.map(car => "<tr><td>" + car.id + "</td>" + "<td>" + car.year + "</td>" + "<td>" + car.make + "</td>" + "<td>" + car.model + "</td>" + "<td>" + car.price + "</td></tr>");
+                var carTJoin = carT.join("");
+                var catTjs = document.getElementById("fillT").innerHTML = heading + carTJoin;
+            }
+
+            function tablePrice() {
+                var price = document.getElementById("setPrice").value;
+                var fill = cars.filter(function (car) {
+                    return car.price < price;
+                })
+                
+                var priceT = fill.map(car => "<tr><td>" + car.id + "</td>" + "<td>" + car.year + "</td>" + "<td>" + car.make + "</td>" + "<td>" + car.model + "</td>" + "<td>" + car.price + "</td></tr>");
+                var pTJoin = priceT.join("");
+                var priceHTML = document.getElementById("fillT").innerHTML = heading + pTJoin;
+            }
+
+        </script>
+    </body>
+</html>

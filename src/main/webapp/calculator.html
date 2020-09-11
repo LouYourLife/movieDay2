@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #container{
+                width: 226px;
+                height: 274px;
+                border: 3px solid darkblue;
+                margin: auto
+            }
+            .t1, .t4{
+                border: 1px solid black;
+                height: 48px;
+                margin-left: 3px;
+                margin-top: 3px;
+                display: inline-block;
+                text-align: center;
+                line-height: 48px;
+            }
+            .t1{
+                width: 48px;
+            }
+            .t4{
+                width: 219px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Calculator</h1>
+
+        <div id="container">
+            <div id="display" class="t4"></div>
+            <div id="buttons">
+                <div class="t1">7</div>
+                <div class="t1">8</div>
+                <div class="t1">9</div>
+                <div class="t1">/</div>
+
+                <div class="t1">4</div>
+                <div class="t1">5</div>
+                <div class="t1">6</div>
+                <div class="t1">*</div>
+
+                <div class="t1">1</div>
+                <div class="t1">2</div>
+                <div class="t1">3</div>
+                <div class="t1">-</div>
+
+                <div class="t1">0</div>
+                <div class="t1">.</div>
+                <div class="t1">+</div>
+                <div id="calculate"class="t1">=</div>
+            </div>
+        </div>
+
+        <script>
+//            var buttons = document.getElementById("buttons");
+//            buttons.onclick = clicked;
+//            
+//            var calculate = document.getElementById("calculate");
+//            calculate.onclick = caculate;
+            // Forslag fra Jon:
+            let display = document.getElementById("display");
+            buttonsDiv = document.getElementById("buttons");
+            buttonsDiv.addEventListener('click', (event) => {
+                event.preventDefault();
+                keyPressed = event.target.innerText;
+                display.innerHTML += keyPressed;
+            });
+
+            let calculateDiv = document.getElementById("calculate");
+            calculateDiv.addEventListener('click', (event) => {
+                event.stopPropagation();
+                let dis = display.innerHTML.toString();
+                add = dis.indexOf("+");
+                sub = dis.indexOf("-");
+                mul = dis.indexOf("*");
+                div = dis.indexOf("/");
+
+                //Du bruger split("en operator") som giver et array af dine tal
+                //du bruger du Number(array[0]) og Number(array[1]) så bliver de til tal
+
+                if (add >= 0) {
+                    let resA = dis.split("+");
+                    let x = Number(resA[0]);
+                    let y = Number(resA[1]);
+                    let resAdd = x + y;
+                    display.innerHTML = resAdd;
+                } else if (sub >= 0) {
+                    let resS = dis.split("-");
+                    let xS = Number(resS[0]);
+                    let yS = Number(resS[1]);
+                    let resSub = xS - yS;
+                    display.innerHTML = resSub;
+                } else if (mul >= 0) {
+                    let resM = dis.split("*");
+                    let xM = Number(resM[0]);
+                    let yM = Number(resM[1]);
+                    let resMul = xM * yM;
+                    display.innerHTML = resMul;
+                } else if (div >= 0) {
+                    let resD = dis.split("/");
+                    let xD = Number(resD[0]);
+                    let yD = Number(resD[1]);
+                    let resDiv = xD / yD;
+                    display.innerHTML = resDiv;
+                }
+            });
+        </script>
+
+    </body>
+</html>

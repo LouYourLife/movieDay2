@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript Day-1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>JavaScript Day-1 - Functions and callbacks</h1>
+
+        <p>Åben web console for at se svar og kode</p>
+        <p>Kode ligger i jsDayOne.html</p>
+        <p>Svar på alle spørgsmål i opgave 2 ligger som noter i kode</p>
+
+        <script>
+//Opgave 1:
+            console.log("Opgave 1:")
+            console.log("Se funktioner add, sub og cb i koden")
+//Function Declaration
+//Observe: no return type, no type on parameters
+            function add(n1, n2) {
+                return n1 + n2;
+            }
+
+//Function Expression
+            var sub = function (n1, n2) {
+                return n1 - n2
+            }
+
+            var mul = function (n1, n2) {
+                return n1 * n2;
+            }
+
+//Callback example
+            var cb = function (n1, n2, callback) {
+                try {
+                    return "Result from the two numbers: " + n1 + "+" + n2 + "=" + callback(n1, n2);
+                } catch (e) {
+                    console.log("Callback example below:")
+                    console.error(e.name + ": " + e.message)
+                }
+            };
+
+//Opgave 2:
+            console.log("Opgave 2:")
+            console.log(add(1, 2))
+//What will this print?
+//3
+
+            console.log(add)
+//What will it print and what does add represent?
+//[Function: add]
+//Den printer selve funktionens navn, eller at det faktisk er en function og ikke en variabel
+
+            console.log(add(1, 2, 3));
+//What will it print
+//3
+
+            console.log(add(1));
+//What will it print 	
+//NaN
+
+            console.log(cb(3, 3, add));
+//What will it print
+//Result from the two numbers: 3+3=6
+//Kalder cd funktion!
+
+            console.log(cb(4, 3, sub));
+//What will it print
+//Result from the two numbers: 4+3=1
+
+            console.log(cb(3, 3, add()));
+//What will it print (and what was the problem)
+//return "Result from the two numbers: "+n1+"+"+n2+"="+callback(n1,n2);
+//TypeError: callback is not a function
+
+            console.log(cb(3, "hh", add));
+//What will it print
+//Result from the two numbers: 3+hh=3hh
+
+// Opgave 3:
+// Se cb funktion
+            console.log("Opgave 3:")
+            console.log("Se funktion cb i kode for tilføjet error message")
+
+// Opgave 4:
+// Se toppen for mul funktion
+            console.log("Opgave 4:")
+            console.log("Se funktion mul i kode")
+
+// Opgave 5:
+            console.log("Opgave 5:")
+            console.log(cb(2, 3, mul));
+
+        </script>
+    </body>
+</html>

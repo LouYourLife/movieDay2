@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The JavaScript Array</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>The JavaScript Array</h1>
+        
+        <p>Åben web console for at se svar og kode</p>
+        <p>Kode ligger i opgaveArray.html</p>
+
+        <script>
+// a)
+            var boys = ["Peter", "Lars", "Ole"];
+            var girls = ["Janne", "Hanne", "Sanne"];
+
+            console.log("a) Lav arrays")
+            console.log(boys)
+
+// b)
+            var all = boys.concat(girls);
+
+            console.log("b) Brug af concat")
+            console.log(all)
+
+// c)
+            console.log("c) Brug af join")
+            console.log(all.join())
+            console.log(all.join('-'))
+
+// d)
+            girls.push('Lone', 'Gitte');
+            console.log("d) Brug af push")
+            console.log(girls)
+
+// e)
+            boys.unshift('Hans', 'Kurt');
+            console.log("e) Brug af unshift")
+            console.log(boys)
+
+// f)
+            boys.shift('Hans');
+            console.log("f) Brug af shift")
+            console.log(boys)
+
+// g)
+            girls.pop('Gitte');
+            console.log("g) Brig af pop")
+            console.log(girls)
+
+// h)
+            boys.splice(3, 1);
+            girls.splice(0, 1);
+            console.log("h) Brug af splice")
+            console.log(boys)
+            console.log(girls)
+
+// i)
+            all.reverse();
+            console.log("i) Brug af reverse")
+            console.log(all)
+
+// j)
+            all.sort();
+            console.log("j) Brug af sort")
+            console.log(all)
+
+// k) ??
+            console.log("Fik ikke lavet k")
+
+// l)
+            var mapArr = all.map(function (v) {
+                return v.toUpperCase();
+            });
+            console.log("l) Brug af map til upperCase")
+            console.log(mapArr)
+
+// m)
+            var filArr = mapArr.filter(function (name) {
+                if (name.toString().substring(0, 1) === 'L' || name.toString().substring(0, 1) === 'S') {
+                    return name;
+                }
+            })
+            console.log("m) Brug af filter")
+            console.log(filArr)
+        </script>
+    </body>
+</html>
